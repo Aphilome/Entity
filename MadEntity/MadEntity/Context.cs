@@ -21,6 +21,10 @@ namespace MadEntity
         {
             optionsBuilder.UseNpgsql(@"host=localhost;port=5432;database=mad-entity-db;username=postgres;password=admin");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Person>().Property(p => p.Name).IsRequired();
+        }
 
         public DbSet<Person> Persons {get;  set; }
         public DbSet<Department> Departments { get;  set; }
