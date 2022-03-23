@@ -12,8 +12,7 @@ namespace MadEntity.Entities
     {
         [Key]
         public int Id2 { get; set; }
-        [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Column("LastName")]
         public string? Surname { get; set; }
         [NotMapped]
