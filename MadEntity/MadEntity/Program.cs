@@ -101,6 +101,7 @@ namespace MadEntity
 
                 foreach (var person in persons)
                 {
+                    person.Name += "1";
                     Console.WriteLine($"{ person.Name } { person.Surname } { person.Address?.Street } { person.Department?.Name }");
                     Console.WriteLine("Hobbies");
                     foreach (var hobby in person.Hobbies)
@@ -109,6 +110,7 @@ namespace MadEntity
                     }
                     Console.WriteLine("-------------------------------");
                 }
+                context.SaveChanges();
             }
 
             using (var context = new Context())
