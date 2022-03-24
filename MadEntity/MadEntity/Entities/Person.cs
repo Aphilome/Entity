@@ -21,5 +21,7 @@ namespace MadEntity.Entities
         public int? CurrentDepartmentId { get; set; }
 
         public Department? Department { get; set; }
+
+        public Adress? Adress { get; set; }
     }
 }
