@@ -45,7 +45,7 @@ namespace MadEntity
 
         public DbSet<Department> Departments { get;  set; }
 
-        public DbSet<Address> Adresses { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Hobby> Hobbies { get; set; }
 

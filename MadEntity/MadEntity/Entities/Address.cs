@@ -10,12 +10,13 @@ namespace MadEntity.Entities
 {
     internal class Address
     {
-        [Key]
-        //[ForeignKey(nameof(Person))]
-        public int? PersonId { get; set; }
+        public int Id { get; set; }
 
         public string? Street { get; set; }
 
-        public Person? Person { get; set; }  // optional
+        //[ForeignKey(nameof(Person))]
+        public int? PersonId { get; set; }
+
+        public Person? Person { get; set; }
     }
 }

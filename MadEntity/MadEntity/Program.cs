@@ -7,90 +7,101 @@ namespace MadEntity
     {
         static void Main(string[] args)
         {
-            //using (var context = new Context())
-            //{
-            //    var dep1 = new Department()
-            //    {
-            //        Name = "Dep1" 
-            //    };
-                
-            //    var dep2 = new Department()
-            //    {
-            //        Name = "Dep2" 
-            //    };   
-                
-            //    var hobby1 = new Hobby()
-            //    {
-            //        Name = "Cars" 
-            //    };
-                                
-            //    var hobby2 = new Hobby()
-            //    {
-            //        Name = "Programming" 
-            //    };
-                                
-            //    var hobby3 = new Hobby()
-            //    {
-            //        Name = "Singing" 
-            //    };   
-                
-            //    var hobby4 = new Hobby()
-            //    {
-            //        Name = "Swimming" 
-            //    }; 
-                
-            //    var address1 = new Address()
-            //    {
-            //        Street = "M prospect" 
-            //    };
-                                
-            //    var address2 = new Address()
-            //    {
-            //        Street = "N prospect" 
-            //    };
-                                                
-            //    var address3 = new Address()
-            //    {
-            //        Street = "O prospect" 
-            //    };
+            using (var context = new Context())
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
 
-            //    var person1 = new Person()
-            //    {
-            //        Name = "Aura",
-            //        Surname = "Philomena",
-            //        Department = dep1,
+                var dep1 = new Department()
+                {
+                    Name = "Dep1"
+                };
 
-            //        Hobbies = new List<Hobby>() { hobby1, hobby2 },
-            //        Address = address1
-            //    };
+                var dep2 = new Department()
+                {
+                    Name = "Dep2"
+                };
 
-            //    var person2 = new Person()
-            //    {
-            //        Name = "Tion",
-            //        Surname = "Birdpirson",
-            //        Department = dep1,
-            //        Hobbies = new List<Hobby>() { hobby3, hobby4 },
-            //        Address = address2             
-            //    };
+                var hobby1 = new Hobby()
+                {
+                    Name = "Cars"
+                };
 
-            //    var person3 = new Person()
-            //    {
-            //        Name = "Aura2",
-            //        Surname = "Philomena2",
-            //        Department = dep2,
+                var hobby2 = new Hobby()
+                {
+                    Name = "Programming"
+                };
 
-            //        Hobbies = new List<Hobby>() { hobby1 },
-            //        Address = address3
-            //    };
+                var hobby3 = new Hobby()
+                {
+                    Name = "Singing"
+                };
 
-            //    //context.Departments.Add(dep1);
-            //    //context.Departments.Add(dep2);
+                var hobby4 = new Hobby()
+                {
+                    Name = "Swimming"
+                };
 
-            //    context.Persons.Add(person1);
-            //    context.Persons.Add(person2);
-            //    context.Persons.Add(person3);
-            //    context.SaveChanges();
-            //}
+                var address1 = new Address()
+                {
+                    Street = "M prospect"
+                };
+
+                var address2 = new Address()
+                {
+                    Street = "N prospect"
+                };
+
+                var address3 = new Address()
+                {
+                    Street = "O prospect"
+                };
+
+                var person1 = new Person()
+                {
+                    Name = "Aura",
+                    Surname = "Philomena",
+                    Department = dep1,
+
+                    Hobbies = new List<Hobby>() { hobby1, hobby2 },
+                    Address = address1
+                };
+
+                var person2 = new Person()
+                {
+                    Name = "Tion",
+                    Surname = "Birdperson",
+                    Department = dep1,
+                    Hobbies = new List<Hobby>() { hobby3, hobby4 },
+                    Address = address2
+                };
+
+                var person3 = new Person()
+                {
+                    Name = "Aura2",
+                    Surname = "Philomena2",
+                    Department = dep2,
+
+                    Hobbies = new List<Hobby>() { hobby1 },
+                    Address = address3
+                };
+
+
+
+                //context.Addresses.Add(address1);
+                //context.Addresses.Add(address2);
+                //context.Addresses.Add(address3);
+
+
+
+                //context.Departments.Add(dep1);
+                //context.Departments.Add(dep2);
+
+                context.Persons.Add(person1);
+                context.Persons.Add(person2);
+                context.Persons.Add(person3);
+                context.SaveChanges();
+            }
 
             using (var context = new Context())
             {
@@ -99,17 +110,20 @@ namespace MadEntity
                     .Include(p => p.Hobbies)
                     .Include(p => p.Department);
 
-                foreach (var person in persons)
-                {
-                    person.Name += "1";
-                    Console.WriteLine($"{ person.Name } { person.Surname } { person.Address?.Street } { person.Department?.Name }");
-                    Console.WriteLine("Hobbies");
-                    foreach (var hobby in person.Hobbies)
-                    {
-                        Console.WriteLine(hobby.Name);
-                    }
-                    Console.WriteLine("-------------------------------");
-                }
+                //foreach (var person in persons)
+                //{
+                //    person.Name += "1";
+                //    Console.WriteLine($"{ person.Name } { person.Surname } { person.Address?.Street } { person.Department?.Name }");
+                //    Console.WriteLine("Hobbies");
+                //    foreach (var hobby in person.Hobbies)
+                //    {
+                //        Console.WriteLine(hobby.Name);
+                //    }
+                //    Console.WriteLine("-------------------------------");
+                //}
+
+                var person = context.Persons.Where(p => p.Name.Contains("Tion")).Single();
+                context.Persons.Remove(person);
                 context.SaveChanges();
             }
 

@@ -20,7 +20,7 @@ namespace MadEntity.Entities
 
         public Department? Department { get; set; }
 
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         public ICollection<Hobby>? Hobbies { get; set; }
 
