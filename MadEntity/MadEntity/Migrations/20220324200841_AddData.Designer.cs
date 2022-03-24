@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MadEntity.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220324185239_data2")]
-    partial class data2
+    [Migration("20220324200841_AddData")]
+    partial class AddData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,6 +59,23 @@ namespace MadEntity.Migrations
                         .IsUnique();
 
                     b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Street = "M prospect"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Street = "N prospect"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Street = "O prospect"
+                        });
                 });
 
             modelBuilder.Entity("MadEntity.Entities.Department", b =>
@@ -76,6 +93,18 @@ namespace MadEntity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Dep1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Dep2"
+                        });
                 });
 
             modelBuilder.Entity("MadEntity.Entities.Hobby", b =>
@@ -93,6 +122,28 @@ namespace MadEntity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hobbies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Cars"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Programming"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Singing"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Swimming"
+                        });
                 });
 
             modelBuilder.Entity("MadEntity.Entities.Person", b =>
@@ -123,20 +174,6 @@ namespace MadEntity.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Persons");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 3,
-                            Name = "Aura",
-                            Surname = "Aura"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Tion",
-                            Surname = "Tion"
-                        });
                 });
 
             modelBuilder.Entity("HobbyPerson", b =>
