@@ -14,7 +14,7 @@ namespace MadEntity.Entities
         //[ForeignKey(nameof(Person))]
         public int? PersonId { get; set; }
 
-        public string Street { get; set; }
+        public string? Street { get; set; }
 
         public Person? Person { get; set; }  // optional
     }

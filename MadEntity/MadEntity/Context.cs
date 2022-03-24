@@ -12,14 +12,16 @@ namespace MadEntity
     {
         public Context()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
 
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(@"host=localhost;port=5432;database=mad-entity-db;username=postgres;password=admin");
+            optionsBuilder.UseNpgsql(@"host=localhost;port=5432;database=mad-entity-db;username=postgres;password=admin")
+                //.LogTo(Console.WriteLine)
+                ;
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
