@@ -10,12 +10,16 @@ namespace MadEntity.Entities
 {
     internal class Person
     {
-        [Key]
-        public int Id2 { get; set; }
+        public int Id { get; set; }
+
         public string? Name { get; set; }
-        [Column("LastName")]
+
         public string? Surname { get; set; }
-        [NotMapped]
+
         public int Age { get; set; }
+
+        public int DepartmentId { get; set; }
+
+        public Department? Department { get; set; }
     }
 }

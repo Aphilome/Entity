@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace MadEntity.Entities
 {
-    [Table("Deps")]
     internal class Department
     {
-        public int Id { get; set; }
+        public int DepartmentId { get; set; }
 
         public string Name { get; set; }
 
-        public ICollection<Person>? Persons { get; set; }
+        public ICollection<Person>? Persons { get; set; } //optional
 
     }
 }
