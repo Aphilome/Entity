@@ -16,9 +16,10 @@ namespace MadEntity.Entities
 
         public string? Surname { get; set; }
 
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
-        public int DepartmentId { get; set; }
+        [ForeignKey(nameof(Department))]
+        public int? CurrentDepartmentId { get; set; }
 
         public Department? Department { get; set; }
     }
