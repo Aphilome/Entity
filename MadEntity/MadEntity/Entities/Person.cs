@@ -18,10 +18,13 @@ namespace MadEntity.Entities
 
         public int? Age { get; set; }
 
-        public int? CurrentDepartmentId { get; set; }
+        public ICollection<Department> Departments { get; set; }
 
         public Department? Department { get; set; }
 
+        public int? CurrentDepartmentId { get; set; }
+
         public Adress? Adress { get; set; }
+
     }
 }

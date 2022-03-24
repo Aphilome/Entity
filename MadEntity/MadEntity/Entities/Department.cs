@@ -14,6 +14,5 @@ namespace MadEntity.Entities
         public string Name { get; set; }
 
         public ICollection<Person>? Persons { get; set; } //optional
-
     }
 }
