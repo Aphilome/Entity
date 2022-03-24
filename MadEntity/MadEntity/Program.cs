@@ -128,6 +128,29 @@ namespace MadEntity
                     Console.WriteLine(person.Department);
                 }
             }
+            
+            using (var context = new Context())
+            {
+                var persons = from p in context.Persons
+                              join d in context.Departments
+                              on p.Department.Id equals d.Id
+                              where d.Name.Contains("1")
+                              select new
+                              {
+                                  PersonId = p.Id,
+                                  DepName = d.Name,
+                                  PersonName = $"{p.Name} {p.Surname}"
+                              };
+
+                foreach (var person in persons)
+                {
+                    Console.WriteLine(person.PersonId);
+                    Console.WriteLine(person.DepName);
+                    Console.WriteLine(person.PersonName);
+                }
+                Console.WriteLine("-------------------------------");
+
+            }
         }
     }
 }
