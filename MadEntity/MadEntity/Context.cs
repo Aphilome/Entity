@@ -24,21 +24,28 @@ namespace MadEntity
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>()
-                .HasOne(p => p.Adress)
+                .HasOne(p => p.Address)
                 .WithOne(a => a.Person)
                 .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Person>()
-                .HasMany(p => p.Departments)
+                .HasOne(p => p.Department)
+                .WithMany(d => d.Persons);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(p => p.Hobbies)
                 .WithMany(d => d.Persons)
-                .UsingEntity(j => j.ToTable("PersonToDepartment"));
+                .UsingEntity(j => j.ToTable("PersonHobbies"));
 
         }
 
         public DbSet<Person> Persons {get;  set; }
+
         public DbSet<Department> Departments { get;  set; }
 
-        public DbSet<Adress> Adresses { get; set; }
+        public DbSet<Address> Adresses { get; set; }
+
+        public DbSet<Hobby> Hobbies { get; set; }
 
     }   
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MadEntity.Entities
 {
-    internal class Adress
+    internal class Address
     {
         [Key]
         //[ForeignKey(nameof(Person))]
