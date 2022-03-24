@@ -9,8 +9,8 @@ namespace MadEntity
         {
             using (var context = new Context())
             {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
+                //context.Database.EnsureDeleted();
+                //context.Database.EnsureCreated();
 
                 var dep1 = new Department()
                 {
@@ -122,8 +122,11 @@ namespace MadEntity
                 //    Console.WriteLine("-------------------------------");
                 //}
 
-                var person = context.Persons.Where(p => p.Name.Contains("Tion")).Single();
-                context.Persons.Remove(person);
+                var person = context.Persons.Where(p => p.Name.Contains("Tion")).FirstOrDefault();
+                if (person != null)
+                {
+                    context.Persons.Remove(person);
+                }
                 context.SaveChanges();
             }
 

@@ -16,7 +16,11 @@ namespace MadEntity.Entities
 
         public string? Surname { get; set; }
 
+        public string? MiddleName { get; set; }
+
         public int? Age { get; set; }
+
+        //public int CurrentDepartmentId { get; set; }
 
         public Department? Department { get; set; }
 
