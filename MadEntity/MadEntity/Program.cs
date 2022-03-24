@@ -109,9 +109,24 @@ namespace MadEntity
                     }
                     Console.WriteLine("-------------------------------");
                 }
+            }
 
-                //var data0 = context.Persons.Include(p => p.Department);
-
+            using (var context = new Context())
+            {
+                var persons = context.Persons
+                    .Join(context.Departments,
+                    p => p.Department.Id,
+                    d => d.Id,
+                    (person, department) =>
+                    new {
+                        PersonId= person.Id,
+                        Department = department.Name
+                    });
+                foreach (var person in persons)
+                {
+                    Console.WriteLine(person.PersonId);
+                    Console.WriteLine(person.Department);
+                }
             }
         }
     }
