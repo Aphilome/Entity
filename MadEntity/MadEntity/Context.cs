@@ -39,8 +39,6 @@ namespace MadEntity
                 .WithMany(d => d.Persons)
                 .UsingEntity(j => j.ToTable("PersonHobbies"));
 
-
-
             modelBuilder.Entity<Person>().HasData(new Person
             {
                 Id = 3,
