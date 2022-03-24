@@ -30,6 +30,11 @@ namespace MadEntity
                 .HasOne<Department>(d => d.Department)
                 .WithMany(p => p.Persons)
                 .HasForeignKey(p => p.CurrentDepartmentId);
+
+            modelBuilder.Entity<Person>()
+                .HasOne(p => p.Adress)
+                .WithOne(a => a.Person)
+                .OnDelete(DeleteBehavior.SetNull);
         }
 
         public DbSet<Person> Persons {get;  set; }

@@ -11,8 +11,8 @@ namespace MadEntity.Entities
     internal class Adress
     {
         [Key]
- //       [ForeignKey(nameof(Person))]
-        public int PersonId { get; set; }
+        //[ForeignKey(nameof(Person))]
+        public int? PersonId { get; set; }
 
         public string Street { get; set; }
 
