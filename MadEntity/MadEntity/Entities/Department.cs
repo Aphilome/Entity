@@ -13,7 +13,6 @@ namespace MadEntity.Entities
 
         public string Name { get; set; }
 
-        [ForeignKey("CurrentDepartmentId")]
         public ICollection<Person>? Persons { get; set; } //optional
 
     }

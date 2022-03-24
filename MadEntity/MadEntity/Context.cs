@@ -23,8 +23,16 @@ namespace MadEntity
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Person>().Property(p => p.Name).IsRequired();
-            modelBuilder.Entity<Department>().Property(p => p.Name).HasColumnName("Title");
+            //modelBuilder.Entity<Person>().Property(p => p.Name).IsRequired();
+            
+            modelBuilder.Entity<Department>()
+                .Property(p => p.Name)
+                .HasColumnName("Title");
+
+            modelBuilder.Entity<Person>()
+                .HasOne<Department>(d => d.Department)
+                .WithMany(p => p.Persons)
+                .HasForeignKey(p => p.CurrentDepartmentId);
         }
 
         public DbSet<Person> Persons {get;  set; }
