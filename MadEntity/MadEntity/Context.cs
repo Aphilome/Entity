@@ -27,6 +27,12 @@ namespace MadEntity
                 .HasOne(p => p.Adress)
                 .WithOne(a => a.Person)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(p => p.Departments)
+                .WithMany(d => d.Persons)
+                .UsingEntity(j => j.ToTable("PersonToDepartment"));
+
         }
 
         public DbSet<Person> Persons {get;  set; }
