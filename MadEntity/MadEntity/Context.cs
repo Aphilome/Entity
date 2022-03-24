@@ -23,14 +23,6 @@ namespace MadEntity
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Person>().Property(p => p.Name).IsRequired();
-
-
-            modelBuilder.Entity<Person>()
-                .HasOne<Department>(d => d.Department)
-                .WithMany(p => p.Persons)
-                .HasForeignKey(p => p.CurrentDepartmentId);
-
             modelBuilder.Entity<Person>()
                 .HasOne(p => p.Adress)
                 .WithOne(a => a.Person)
