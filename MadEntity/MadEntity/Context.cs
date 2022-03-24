@@ -39,7 +39,24 @@ namespace MadEntity
                 .WithMany(d => d.Persons)
                 .UsingEntity(j => j.ToTable("PersonHobbies"));
 
+
+
+            modelBuilder.Entity<Person>().HasData(new Person
+            {
+                Id = 3,
+                Name = "Aura",
+                Surname = "Aura"
+            });
+
+            modelBuilder.Entity<Person>().HasData(new Person
+            {
+                Id = 4,
+                Name = "Tion",
+                Surname = "Tion"
+            });
         }
+
+
 
         public DbSet<Person> Persons {get;  set; }
 

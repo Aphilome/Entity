@@ -9,7 +9,7 @@ namespace MadEntity.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            /*migrationBuilder.CreateTable(
+            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
@@ -114,12 +114,12 @@ namespace MadEntity.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Persons_DepartmentId",
                 table: "Persons",
-                column: "DepartmentId");*/
+                column: "DepartmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            /*migrationBuilder.DropTable(
+            migrationBuilder.DropTable(
                 name: "Addresses");
 
             migrationBuilder.DropTable(
@@ -132,7 +132,7 @@ namespace MadEntity.Migrations
                 name: "Persons");
 
             migrationBuilder.DropTable(
-                name: "Departments");*/
+                name: "Departments");
         }
     }
 }

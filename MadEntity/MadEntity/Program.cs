@@ -5,12 +5,12 @@ namespace MadEntity
 {
     class Program
     {
-        static void Main(string[] args)
+        static void SeedData()
         {
             using (var context = new Context())
             {
                 //context.Database.EnsureDeleted();
-                //context.Database.EnsureCreated();
+                // context.Database.EnsureCreated();
 
                 var dep1 = new Department()
                 {
@@ -86,23 +86,18 @@ namespace MadEntity
                     Address = address3
                 };
 
-
-
-                //context.Addresses.Add(address1);
-                //context.Addresses.Add(address2);
-                //context.Addresses.Add(address3);
-
-
-
-                //context.Departments.Add(dep1);
-                //context.Departments.Add(dep2);
-
                 context.Persons.Add(person1);
                 context.Persons.Add(person2);
                 context.Persons.Add(person3);
                 context.SaveChanges();
             }
+        }
 
+        static void Main(string[] args)
+        {
+            //SeedData();
+            //return ;
+            
             using (var context = new Context())
             {
                 var persons = context.Persons
@@ -110,24 +105,12 @@ namespace MadEntity
                     .Include(p => p.Hobbies)
                     .Include(p => p.Department);
 
-                //foreach (var person in persons)
+                //var person = context.Persons.Where(p => p.Name.Contains("Tion")).FirstOrDefault();
+                //if (person != null)
                 //{
-                //    person.Name += "1";
-                //    Console.WriteLine($"{ person.Name } { person.Surname } { person.Address?.Street } { person.Department?.Name }");
-                //    Console.WriteLine("Hobbies");
-                //    foreach (var hobby in person.Hobbies)
-                //    {
-                //        Console.WriteLine(hobby.Name);
-                //    }
-                //    Console.WriteLine("-------------------------------");
+                //    context.Persons.Remove(person);
                 //}
-
-                var person = context.Persons.Where(p => p.Name.Contains("Tion")).FirstOrDefault();
-                if (person != null)
-                {
-                    context.Persons.Remove(person);
-                }
-                context.SaveChanges();
+                //context.SaveChanges();
             }
 
             using (var context = new Context())
